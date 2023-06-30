@@ -3,19 +3,20 @@ using UnityEngine.SceneManagement;
 
 namespace project
 {
-    public class PlayModeHelper : MonoBehaviour
+    public class GameplayHelper : MonoBehaviour
     {
 #if UNITY_EDITOR
         [field: SerializeField]
-        private GameSceneSO _managersScene { get; set; }
+        private GameSceneSO _gameplayManagersScene { get; set; }
 
         private bool _shouldLoad = false;
 
         private void Awake()
         {
-            if (!SceneManager.GetSceneByName(_managersScene.Scene.editorAsset.name).isLoaded)
+            if (!SceneManager.GetSceneByName(_gameplayManagersScene.Scene.editorAsset.name).isLoaded)
             {
-                _managersScene.Scene.LoadSceneAsync(LoadSceneMode.Additive, true);
+                //_shouldLoad = true;
+                _gameplayManagersScene.Scene.LoadSceneAsync(LoadSceneMode.Additive, true);
             }
         }
 
